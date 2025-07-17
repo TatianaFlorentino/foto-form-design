@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { toast } from "sonner";
 
 const formSchema = z.object({
@@ -81,6 +82,46 @@ const accountTypes = [
 
 export function PhotographyContestForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const imageRightsText = `CESSÃO DE DIREITOS DE USO DE IMAGEM
+
+Por meio do presente instrumento, eu,______________________________________________________,
+RG:______________ , CPF:_________________ , autorizo a GOIÁS TURISMO – AGÊNCIA ESTADUAL DE TURISMO, autarquia estadual, dotada de personalidade jurídica de direito público interno, criada pela Lei Estadual nº 13.550, de 11 de novembro de 1999, com estrutura alterada pela Lei nº 21.792, de 16 de fevereiro de 2023, regulamentada pelo Decreto Estadual nº 10.218, de 16 de fevereiro de 2023, inscrita no CNPJ/MF sob o nº 03.549.463/0001-03, com sede na Rua 30, esquina com a Rua 4, Centro, Goiânia, Goiás, CEP.: 74.015-180, a utilizar a(s) imagem(s) enviada(s) para concorrer a "1ª EDIÇÃO DO CONCURSO DE FOTOGRAFIA RUBENS ARTERO", independente da mídia utilizada, de caráter institucional, por tempo indeterminado.
+
+A Goiás Turismo poderá utilizar o material para FINS NÃO COMERCIAIS com finalidade de divulgação ou não, modificando, reproduzindo, editando e/ou alterando, sem limite de quantidade de uso e/ou veiculação, fixando em qualquer suporte existente, seja eletrônico, digital, impresso, editorial e/ou em composições multimídia, adaptando para qualquer idioma, bem como veiculando por todos os meios de sinais e mídias, mediante emprego de qualquer tecnologia (analógica, digital, com ou sem fio e outras), não limitados a internet, cabo ou satélite, através de qualquer forma de transmissão de sinais/dados, exposição, inclusão em base de dados, em terminais móveis, através de qualquer processo de comunicação público ou privado, incluindo exibição em videowall e vôos nacionais e internacionais, e quaisquer outras modalidades de utilização existentes ou que venham a ser inventadas, próprios ou de terceiros, dentro e fora do território nacional, podendo, inclusive, disponibilizar e/ou ceder à terceiros, sendo tudo sem qualquer remuneração, pelo prazo de proteção legal previsto na Lei 9.610/1998.
+
+A presente autorização é feita em caráter definitivo e irrevogável, de forma gratuita, sem ônus de qualquer espécie a Goiás Turismo.`;
+
+  const privacyTermsText = `TERMO DE PRIVACIDADE, POLÍTICA DE USO E TRATAMENTO DE DADOS (LGPD)
+
+O Estado de Goiás, por meio da Goiás Turismo, está comprometido com a proteção dos dados pessoais dos participantes do "1ª Edição do Concurso de Fotografia Rubens Artero", em conformidade com a Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018) e demais normativas aplicáveis.
+
+COLETA E FINALIDADE DOS DADOS
+Os dados pessoais coletados através deste formulário de inscrição serão utilizados exclusivamente para:
+- Processar a inscrição no concurso de fotografia;
+- Realizar comunicações relacionadas ao concurso;
+- Divulgar os resultados do concurso;
+- Cumprimento de obrigações legais e regulamentares.
+
+DADOS COLETADOS
+São coletadas as seguintes categorias de dados pessoais: nome completo, CPF, data de nascimento, nome da mãe, gênero, e-mail, telefone, endereço completo, dados bancários e demais informações fornecidas no formulário de inscrição.
+
+BASE LEGAL
+O tratamento dos dados pessoais está fundamentado no legítimo interesse da Administração Pública para a realização do concurso cultural, conforme art. 7º, IX da LGPD.
+
+COMPARTILHAMENTO
+Os dados poderão ser compartilhados com órgãos da Administração Pública, quando necessário para o cumprimento de finalidades específicas do concurso ou por determinação legal.
+
+RETENÇÃO
+Os dados serão mantidos pelo período necessário para cumprimento das finalidades descritas e das obrigações legais aplicáveis.
+
+DIREITOS DO TITULAR
+Você possui os seguintes direitos: confirmação da existência de tratamento, acesso aos dados, correção de dados incompletos/inexatos, anonimização/bloqueio/eliminação, portabilidade, eliminação dos dados tratados com consentimento, informação sobre compartilhamento, informação sobre possibilidade de não fornecer consentimento e revogação do consentimento.
+
+CONTATO
+Para exercer seus direitos ou esclarecer dúvidas sobre o tratamento de dados, entre em contato através dos canais oficiais da Goiás Turismo.
+
+Ao aceitar este termo, você declara estar ciente e concordar com as práticas descritas nesta Política de Privacidade.`;
   
   const {
     register,
@@ -563,9 +604,21 @@ export function PhotographyContestForm() {
                         Cessão de Direitos de Uso de Imagem
                       </Label>
                       <p className="text-sm text-muted-foreground mt-1">
-                        <a href="#" className="text-primary underline hover:no-underline">
-                          Ver detalhes
-                        </a>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <a href="#" className="text-primary underline hover:no-underline">
+                              Ver detalhes
+                            </a>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Cessão de Direitos de Uso de Imagem</DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-4 text-sm">
+                              <pre className="whitespace-pre-wrap font-sans">{imageRightsText}</pre>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
                       </p>
                     </div>
                   </div>
@@ -586,9 +639,21 @@ export function PhotographyContestForm() {
                         Termo de Privacidade, Política de Uso e Tratamento de Dados (LGPD)
                       </Label>
                       <p className="text-sm text-muted-foreground mt-1">
-                        <a href="#" className="text-primary underline hover:no-underline">
-                          Ver detalhes
-                        </a>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <a href="#" className="text-primary underline hover:no-underline">
+                              Ver detalhes
+                            </a>
+                          </DialogTrigger>
+                          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+                            <DialogHeader>
+                              <DialogTitle>Termo de Privacidade, Política de Uso e Tratamento de Dados (LGPD)</DialogTitle>
+                            </DialogHeader>
+                            <div className="space-y-4 text-sm">
+                              <pre className="whitespace-pre-wrap font-sans">{privacyTermsText}</pre>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
                       </p>
                     </div>
                   </div>
