@@ -74,8 +74,9 @@ export default {
 				'input': 'var(--shadow-input)'
 			},
 			fontFamily: {
-				'heading': 'var(--font-heading)',
-				'body': 'var(--font-body)'
+				'heading': ['Open Sans', 'system-ui', 'sans-serif'],
+				'body': ['Open Sans', 'system-ui', 'sans-serif'],
+				'sans': ['Open Sans', 'system-ui', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
