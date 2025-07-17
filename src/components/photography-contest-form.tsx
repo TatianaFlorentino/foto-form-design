@@ -85,12 +85,13 @@ export function PhotographyContestForm() {
   
   const imageRightsText = `CESSÃO DE DIREITOS DE USO DE IMAGEM
 
-Por meio do presente instrumento, eu,______________________________________________________,
-RG:______________ , CPF:_________________ , autorizo a GOIÁS TURISMO – AGÊNCIA ESTADUAL DE TURISMO, autarquia estadual, dotada de personalidade jurídica de direito público interno, criada pela Lei Estadual nº 13.550, de 11 de novembro de 1999, com estrutura alterada pela Lei nº 21.792, de 16 de fevereiro de 2023, regulamentada pelo Decreto Estadual nº 10.218, de 16 de fevereiro de 2023, inscrita no CNPJ/MF sob o nº 03.549.463/0001-03, com sede na Rua 30, esquina com a Rua 4, Centro, Goiânia, Goiás, CEP.: 74.015-180, a utilizar a(s) imagem(s) enviada(s) para concorrer a "1ª EDIÇÃO DO CONCURSO DE FOTOGRAFIA RUBENS ARTERO", independente da mídia utilizada, de caráter institucional, por tempo indeterminado.
+Autorizo a GOIÁS TURISMO – AGÊNCIA ESTADUAL DE TURISMO, autarquia estadual, dotada de personalidade jurídica de direito público interno, criada pela Lei Estadual nº 13.550, de 11 de novembro de 1999, com estrutura alterada pela Lei nº 21.792, de 16 de fevereiro de 2023, regulamentada pelo Decreto Estadual nº 10.218, de 16 de fevereiro de 2023, inscrita no CNPJ/MF sob o nº 03.549.463/0001-03, com sede na Rua 30, esquina com a Rua 4, Centro, Goiânia, Goiás, CEP.: 74.015-180, a utilizar a(s) imagem(s) enviada(s) para concorrer a "1ª EDIÇÃO DO CONCURSO DE FOTOGRAFIA RUBENS ARTERO", independente da mídia utilizada, de caráter institucional, por tempo indeterminado.
 
 A Goiás Turismo poderá utilizar o material para FINS NÃO COMERCIAIS com finalidade de divulgação ou não, modificando, reproduzindo, editando e/ou alterando, sem limite de quantidade de uso e/ou veiculação, fixando em qualquer suporte existente, seja eletrônico, digital, impresso, editorial e/ou em composições multimídia, adaptando para qualquer idioma, bem como veiculando por todos os meios de sinais e mídias, mediante emprego de qualquer tecnologia (analógica, digital, com ou sem fio e outras), não limitados a internet, cabo ou satélite, através de qualquer forma de transmissão de sinais/dados, exposição, inclusão em base de dados, em terminais móveis, através de qualquer processo de comunicação público ou privado, incluindo exibição em videowall e vôos nacionais e internacionais, e quaisquer outras modalidades de utilização existentes ou que venham a ser inventadas, próprios ou de terceiros, dentro e fora do território nacional, podendo, inclusive, disponibilizar e/ou ceder à terceiros, sendo tudo sem qualquer remuneração, pelo prazo de proteção legal previsto na Lei 9.610/1998.
 
-A presente autorização é feita em caráter definitivo e irrevogável, de forma gratuita, sem ônus de qualquer espécie a Goiás Turismo.`;
+A presente autorização é feita em caráter definitivo e irrevogável, de forma gratuita, sem ônus de qualquer espécie a Goiás Turismo.
+
+Ao aceitar este termo, você declara estar ciente e concordar com as práticas descritas nesta Política de CESSÃO DE DIREITOS DE USO DE IMAGEM.`;
 
   const privacyTermsText = `TERMO DE PRIVACIDADE, POLÍTICA DE USO E TRATAMENTO DE DADOS (LGPD)
 
