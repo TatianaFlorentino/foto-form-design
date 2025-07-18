@@ -151,33 +151,14 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
       // Simular envio do formulário
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // Gerar senha provisória
-      const provisionalPassword = `INS${String(Date.now()).slice(-7)}`;
-      
-      toast.success(
-        <div className="space-y-2">
-          <div className="font-semibold">Inscrição realizada com sucesso!</div>
-          <div className="text-sm text-muted-foreground">
-            Em breve você receberá um e-mail com:
-          </div>
-          <div className="text-sm">
-            • Link para o Portal do Candidato<br/>
-            • Seu login: {data.email}<br/>
-            • Senha provisória: {provisionalPassword}
-          </div>
-          <div className="text-xs text-muted-foreground mt-2">
-            Redirecionando para a tela de login...
-          </div>
-        </div>,
-        { duration: 6000 }
-      );
+      toast.success("Inscrição realizada com sucesso! Redirecionando...", {
+        duration: 2000
+      });
       
       console.log("Dados enviados:", data);
       
-      // Redirecionar para página de confirmação
-      setTimeout(() => {
-        navigate(`/confirmation?name=${encodeURIComponent(data.fullName)}&email=${encodeURIComponent(data.email)}`);
-      }, 2000);
+      // Redirecionar para página de confirmação imediatamente
+      navigate(`/confirmation?name=${encodeURIComponent(data.fullName)}&email=${encodeURIComponent(data.email)}`);
       
     } catch (error) {
       toast.error("Erro ao enviar inscrição. Tente novamente.");
