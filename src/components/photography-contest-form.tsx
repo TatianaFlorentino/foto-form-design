@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 const formSchema = z.object({
   category: z.string().min(1, "Por favor, selecione uma categoria"),
@@ -82,6 +83,7 @@ const accountTypes = [
 
 export function PhotographyContestForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const navigate = useNavigate();
   
   const imageRightsText = `CESSÃO DE DIREITOS DE USO DE IMAGEM
 
@@ -149,8 +151,34 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
       // Simular envio do formulário
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      toast.success("Inscrição realizada com sucesso!");
+      // Gerar senha provisória
+      const provisionalPassword = `INS${String(Date.now()).slice(-7)}`;
+      
+      toast.success(
+        <div className="space-y-2">
+          <div className="font-semibold">Inscrição realizada com sucesso!</div>
+          <div className="text-sm text-muted-foreground">
+            Em breve você receberá um e-mail com:
+          </div>
+          <div className="text-sm">
+            • Link para o Portal do Candidato<br/>
+            • Seu login: {data.email}<br/>
+            • Senha provisória: {provisionalPassword}
+          </div>
+          <div className="text-xs text-muted-foreground mt-2">
+            Redirecionando para a tela de login...
+          </div>
+        </div>,
+        { duration: 6000 }
+      );
+      
       console.log("Dados enviados:", data);
+      
+      // Redirecionar para login após 3 segundos
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
+      
     } catch (error) {
       toast.error("Erro ao enviar inscrição. Tente novamente.");
     } finally {
