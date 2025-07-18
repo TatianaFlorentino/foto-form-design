@@ -159,36 +159,42 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
   };
 
   return (
-    <div className="min-h-screen bg-gradient-bg py-8 px-4">
-      <div className="max-w-4xl mx-auto">
-        <Card className="shadow-card border-0">
-          <CardHeader className="text-center pb-8">
-            <div className="flex items-center justify-center mb-6">
-              <div className="bg-gradient-primary p-3 rounded-full">
-                <Camera className="h-8 w-8 text-primary-foreground" />
+    <div className="min-h-screen bg-gradient-bg py-4 sm:py-8 px-3 sm:px-4">
+      <div className="max-w-5xl mx-auto">
+        <Card className="shadow-card border-0 backdrop-blur-sm bg-card/95">
+          <CardHeader className="text-center pb-6 sm:pb-8 px-4 sm:px-6">
+            <div className="flex items-center justify-center mb-4 sm:mb-6">
+              <div className="bg-gradient-primary p-3 sm:p-4 rounded-full shadow-lg animate-pulse">
+                <Camera className="h-6 w-6 sm:h-8 sm:w-8 text-primary-foreground" />
               </div>
             </div>
-            <h1 className="text-4xl font-heading font-bold text-primary mb-2">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-bold text-primary mb-2 tracking-tight">
               Inscreva-se
             </h1>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               1ª Edição do Concurso de Fotografia Rubens Artero
             </p>
           </CardHeader>
           
-          <CardContent className="space-y-8">
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+          <CardContent className="space-y-6 sm:space-y-8 px-4 sm:px-6 pb-6 sm:pb-8">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8">
               {/* Categoria */}
-              <div className="space-y-4">
-                <h2 className="text-2xl font-heading font-semibold text-foreground">
-                  Categoria
-                </h2>
+              <div className="space-y-4 p-4 sm:p-6 bg-muted/30 rounded-lg border border-border/50">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Camera className="h-5 w-5 text-primary" />
+                  </div>
+                  <h2 className="text-xl sm:text-2xl font-heading font-semibold text-foreground">
+                    Categoria
+                  </h2>
+                </div>
                 <div className="space-y-2">
-                  <Label htmlFor="category" className="text-base font-medium">
+                  <Label htmlFor="category" className="text-sm sm:text-base font-medium flex items-center gap-2">
+                    <Camera className="h-4 w-4 text-muted-foreground" />
                     Categoria: <span className="text-required">*</span>
                   </Label>
                   <Select value={watchedCategory} onValueChange={(value) => setValue("category", value)}>
-                    <SelectTrigger className="h-12 shadow-input">
+                    <SelectTrigger className="h-11 sm:h-12 shadow-input bg-background/50 hover:bg-background/80 transition-colors">
                       <SelectValue placeholder="Selecione uma opção" />
                     </SelectTrigger>
                     <SelectContent>
@@ -200,21 +206,29 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
                     </SelectContent>
                   </Select>
                   {errors.category && (
-                    <p className="text-required text-sm">{errors.category.message}</p>
+                    <p className="text-required text-sm flex items-center gap-1">
+                      <span className="text-xs">⚠</span> {errors.category.message}
+                    </p>
                   )}
                 </div>
               </div>
 
               {/* Dados Pessoais */}
-              <div className="space-y-6">
-                <h2 className="text-2xl font-heading font-semibold text-foreground">
-                  Dados Pessoais
-                </h2>
+              <div className="space-y-4 p-4 sm:p-6 bg-muted/30 rounded-lg border border-border/50">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <User className="h-5 w-5 text-primary" />
+                  </div>
+                  <h2 className="text-xl sm:text-2xl font-heading font-semibold text-foreground">
+                    Dados Pessoais
+                  </h2>
+                </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   {/* CPF */}
                   <div className="space-y-2">
-                    <Label htmlFor="cpf" className="text-base font-medium">
+                    <Label htmlFor="cpf" className="text-sm sm:text-base font-medium flex items-center gap-2">
+                      <User className="h-4 w-4 text-muted-foreground" />
                       CPF: <span className="text-required">*</span>
                     </Label>
                     <InputMask
@@ -226,34 +240,40 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
                         <Input
                           {...inputProps}
                           id="cpf"
-                          className="h-12 shadow-input"
+                          className="h-11 sm:h-12 shadow-input bg-background/50 hover:bg-background/80 transition-colors"
                         />
                       )}
                     </InputMask>
                     {errors.cpf && (
-                      <p className="text-required text-sm">{errors.cpf.message}</p>
+                      <p className="text-required text-sm flex items-center gap-1">
+                        <span className="text-xs">⚠</span> {errors.cpf.message}
+                      </p>
                     )}
                   </div>
 
                   {/* Nome Completo */}
                   <div className="space-y-2">
-                    <Label htmlFor="fullName" className="text-base font-medium">
+                    <Label htmlFor="fullName" className="text-sm sm:text-base font-medium flex items-center gap-2">
+                      <User className="h-4 w-4 text-muted-foreground" />
                       Nome completo: <span className="text-required">*</span>
                     </Label>
                     <Input
                       id="fullName"
                       placeholder="Digite seu nome completo"
-                      className="h-12 shadow-input"
+                      className="h-11 sm:h-12 shadow-input bg-background/50 hover:bg-background/80 transition-colors"
                       {...register("fullName")}
                     />
                     {errors.fullName && (
-                      <p className="text-required text-sm">{errors.fullName.message}</p>
+                      <p className="text-required text-sm flex items-center gap-1">
+                        <span className="text-xs">⚠</span> {errors.fullName.message}
+                      </p>
                     )}
                   </div>
 
                   {/* Data de Nascimento */}
                   <div className="space-y-2">
-                    <Label htmlFor="birthDate" className="text-base font-medium">
+                    <Label htmlFor="birthDate" className="text-sm sm:text-base font-medium flex items-center gap-2">
+                      <Calendar className="h-4 w-4 text-muted-foreground" />
                       Data de Nascimento: <span className="text-required">*</span>
                     </Label>
                     <InputMask
@@ -265,38 +285,44 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
                         <Input
                           {...inputProps}
                           id="birthDate"
-                          className="h-12 shadow-input"
+                          className="h-11 sm:h-12 shadow-input bg-background/50 hover:bg-background/80 transition-colors"
                         />
                       )}
                     </InputMask>
                     {errors.birthDate && (
-                      <p className="text-required text-sm">{errors.birthDate.message}</p>
+                      <p className="text-required text-sm flex items-center gap-1">
+                        <span className="text-xs">⚠</span> {errors.birthDate.message}
+                      </p>
                     )}
                   </div>
 
                   {/* Nome da Mãe */}
                   <div className="space-y-2">
-                    <Label htmlFor="motherName" className="text-base font-medium">
+                    <Label htmlFor="motherName" className="text-sm sm:text-base font-medium flex items-center gap-2">
+                      <User className="h-4 w-4 text-muted-foreground" />
                       Nome da Mãe: <span className="text-required">*</span>
                     </Label>
                     <Input
                       id="motherName"
                       placeholder="Digite o nome da mãe"
-                      className="h-12 shadow-input"
+                      className="h-11 sm:h-12 shadow-input bg-background/50 hover:bg-background/80 transition-colors"
                       {...register("motherName")}
                     />
                     {errors.motherName && (
-                      <p className="text-required text-sm">{errors.motherName.message}</p>
+                      <p className="text-required text-sm flex items-center gap-1">
+                        <span className="text-xs">⚠</span> {errors.motherName.message}
+                      </p>
                     )}
                   </div>
 
                   {/* Gênero */}
                   <div className="space-y-2">
-                    <Label htmlFor="gender" className="text-base font-medium">
+                    <Label htmlFor="gender" className="text-sm sm:text-base font-medium flex items-center gap-2">
+                      <User className="h-4 w-4 text-muted-foreground" />
                       Gênero: <span className="text-required">*</span>
                     </Label>
                     <Select value={watchedGender} onValueChange={(value) => setValue("gender", value)}>
-                      <SelectTrigger className="h-12 shadow-input">
+                      <SelectTrigger className="h-11 sm:h-12 shadow-input bg-background/50 hover:bg-background/80 transition-colors">
                         <SelectValue placeholder="Selecione uma opção" />
                       </SelectTrigger>
                       <SelectContent>
@@ -308,30 +334,36 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
                       </SelectContent>
                     </Select>
                     {errors.gender && (
-                      <p className="text-required text-sm">{errors.gender.message}</p>
+                      <p className="text-required text-sm flex items-center gap-1">
+                        <span className="text-xs">⚠</span> {errors.gender.message}
+                      </p>
                     )}
                   </div>
 
                   {/* E-mail */}
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-base font-medium">
+                    <Label htmlFor="email" className="text-sm sm:text-base font-medium flex items-center gap-2">
+                      <Mail className="h-4 w-4 text-muted-foreground" />
                       E-mail: <span className="text-required">*</span>
                     </Label>
                     <Input
                       id="email"
                       type="email"
                       placeholder="Digite seu e-mail"
-                      className="h-12 shadow-input"
+                      className="h-11 sm:h-12 shadow-input bg-background/50 hover:bg-background/80 transition-colors"
                       {...register("email")}
                     />
                     {errors.email && (
-                      <p className="text-required text-sm">{errors.email.message}</p>
+                      <p className="text-required text-sm flex items-center gap-1">
+                        <span className="text-xs">⚠</span> {errors.email.message}
+                      </p>
                     )}
                   </div>
 
                   {/* Telefone */}
                   <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-base font-medium">
+                    <Label htmlFor="phone" className="text-sm sm:text-base font-medium flex items-center gap-2">
+                      <Phone className="h-4 w-4 text-muted-foreground" />
                       Telefone: <span className="text-required">*</span>
                     </Label>
                     <InputMask
@@ -343,27 +375,31 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
                         <Input
                           {...inputProps}
                           id="phone"
-                          className="h-12 shadow-input"
+                          className="h-11 sm:h-12 shadow-input bg-background/50 hover:bg-background/80 transition-colors"
                         />
                       )}
                     </InputMask>
                     {errors.phone && (
-                      <p className="text-required text-sm">{errors.phone.message}</p>
+                      <p className="text-required text-sm flex items-center gap-1">
+                        <span className="text-xs">⚠</span> {errors.phone.message}
+                      </p>
                     )}
                   </div>
 
                   {/* Instagram */}
                   <div className="space-y-2">
-                    <Label htmlFor="instagram" className="text-base font-medium">
+                    <Label htmlFor="instagram" className="text-sm sm:text-base font-medium flex items-center gap-2">
+                      <Instagram className="h-4 w-4 text-muted-foreground" />
                       Instagram:
                     </Label>
                     <div className="relative">
                       <Input
                         id="instagram"
-                        placeholder="@"
-                        className="h-12 shadow-input pl-3"
+                        placeholder="@seuinstagram"
+                        className="h-11 sm:h-12 shadow-input bg-background/50 hover:bg-background/80 transition-colors pl-8"
                         {...register("instagram")}
                       />
+                      <Instagram className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                     </div>
                   </div>
                 </div>
@@ -392,15 +428,21 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
               </div>
 
               {/* Endereço */}
-              <div className="space-y-6">
-                <h2 className="text-2xl font-heading font-semibold text-foreground">
-                  Endereço
-                </h2>
+              <div className="space-y-4 p-4 sm:p-6 bg-muted/30 rounded-lg border border-border/50">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <MapPin className="h-5 w-5 text-primary" />
+                  </div>
+                  <h2 className="text-xl sm:text-2xl font-heading font-semibold text-foreground">
+                    Endereço
+                  </h2>
+                </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   {/* CEP */}
                   <div className="space-y-2">
-                    <Label htmlFor="cep" className="text-base font-medium">
+                    <Label htmlFor="cep" className="text-sm sm:text-base font-medium flex items-center gap-2">
+                      <MapPin className="h-4 w-4 text-muted-foreground" />
                       CEP: <span className="text-required">*</span>
                     </Label>
                     <InputMask
@@ -412,12 +454,14 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
                         <Input
                           {...inputProps}
                           id="cep"
-                          className="h-12 shadow-input"
+                          className="h-11 sm:h-12 shadow-input bg-background/50 hover:bg-background/80 transition-colors"
                         />
                       )}
                     </InputMask>
                     {errors.cep && (
-                      <p className="text-required text-sm">{errors.cep.message}</p>
+                      <p className="text-required text-sm flex items-center gap-1">
+                        <span className="text-xs">⚠</span> {errors.cep.message}
+                      </p>
                     )}
                   </div>
 
@@ -501,12 +545,17 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
               </div>
 
               {/* Dados Bancários */}
-              <div className="space-y-6">
-                <h2 className="text-2xl font-heading font-semibold text-foreground">
-                  Dados Bancários
-                </h2>
+              <div className="space-y-4 p-4 sm:p-6 bg-muted/30 rounded-lg border border-border/50">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Building2 className="h-5 w-5 text-primary" />
+                  </div>
+                  <h2 className="text-xl sm:text-2xl font-heading font-semibold text-foreground">
+                    Dados Bancários
+                  </h2>
+                </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   {/* Banco */}
                   <div className="space-y-2">
                     <Label htmlFor="bank" className="text-base font-medium">
@@ -586,10 +635,15 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
               </div>
 
               {/* Termos e Condições */}
-              <div className="space-y-6">
-                <h2 className="text-2xl font-heading font-semibold text-foreground">
-                  Termos e Condições
-                </h2>
+              <div className="space-y-4 p-4 sm:p-6 bg-muted/30 rounded-lg border border-border/50">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Mail className="h-5 w-5 text-primary" />
+                  </div>
+                  <h2 className="text-xl sm:text-2xl font-heading font-semibold text-foreground">
+                    Termos e Condições
+                  </h2>
+                </div>
                 
                 <div className="space-y-4">
                   {/* Cessão de Direitos */}
@@ -665,21 +719,21 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
               </div>
 
               {/* Botão de Envio */}
-              <div className="flex justify-center pt-6">
+              <div className="flex justify-center pt-6 sm:pt-8">
                 <Button
                   type="submit"
                   size="lg"
                   disabled={isSubmitting}
-                  className="min-w-[200px] h-12 bg-gradient-primary hover:bg-primary-hover transition-all duration-300"
+                  className="w-full sm:w-auto min-w-[250px] h-12 sm:h-14 text-base sm:text-lg bg-gradient-primary hover:bg-primary-hover transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
                       Enviando...
                     </>
                   ) : (
                     <>
-                      <Camera className="h-4 w-4 mr-2" />
+                      <Camera className="h-5 w-5 mr-3" />
                       Fazer Inscrição
                     </>
                   )}
