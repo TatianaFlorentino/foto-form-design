@@ -174,10 +174,10 @@ Ao aceitar este termo, você declara estar ciente e concordar com as práticas d
       
       console.log("Dados enviados:", data);
       
-      // Redirecionar para login após 3 segundos
+      // Redirecionar para página de confirmação
       setTimeout(() => {
-        navigate("/login");
-      }, 3000);
+        navigate(`/confirmation?name=${encodeURIComponent(data.fullName)}&email=${encodeURIComponent(data.email)}`);
+      }, 2000);
       
     } catch (error) {
       toast.error("Erro ao enviar inscrição. Tente novamente.");
